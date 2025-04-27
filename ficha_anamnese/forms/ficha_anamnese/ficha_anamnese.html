@@ -256,6 +256,44 @@
 					<label for="assinatura" class="form-label">Assinatura</label>
 					<input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Digite seu nome ou assine digitalmente">
 				</div>
+
+
+
+				<style>
+					.collapse-content {
+						display: none;
+						padding: 10px;
+						border: 1px solid #ccc;
+						margin-top: 5px;
+					}
+				
+					.collapse-content.active {
+						display: block;
+					}
+				
+					.collapse-button {
+						cursor: pointer;
+						font-weight: bold;
+					}
+				</style>
+				
+				<div class="form-group col-md-12">
+					<div class="collapse-button" onclick="toggleCollapse('infoAdicional')">
+						Informações Adicionais ⯈
+					</div>
+					<div id="infoAdicional" class="collapse-content">
+						<label for="observacoes">Observações:</label>
+						<textarea name="observacoes" id="observacoes" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<script>
+					function toggleCollapse(id) {
+						var content = document.getElementById(id);
+						content.classList.toggle('active');
+					}
+				</script>
+				
 				
 				
 			</div>
