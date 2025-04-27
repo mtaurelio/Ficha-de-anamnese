@@ -5,7 +5,7 @@
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
 	<script type="text/javascript" src="/style-guide/js/fluig-style-guide.min.js" charset="utf-8"></script>
-<script src="/ficha_anamnese/forms/js/script.js"></script></head>
+</head>
 <!-- <i class="flaticon flaticon-bubble-chart icon-md" aria-hidden="true"></i> -->
 <body>
 	
@@ -285,34 +285,12 @@
 						<label for="observacoes">Observações:</label>
 						<textarea name="observacoes" id="observacoes" class="form-control"></textarea>
 					</div>
-				</div>
-				
-				<script>
-					function toggleCollapse(id) {
-						var content = document.getElementById(id);
-						content.classList.toggle('active');
-					}
-				</script>
-				
-				
-				
+				</div>	
 			</div>
-
 				</div>
 			</div>
 </form>
 
-<script>
-	function mostrarCampo(id, mostrar) {
-  document.getElementById(id).style.display = mostrar ? 'block' : 'none';
-}
-
-	// Preenche automaticamente a data atual no campo data_assinatura
-	document.addEventListener('DOMContentLoaded', function() {
-						const hoje = new Date().toISOString().split('T')[0];
-						document.getElementById('data_assinatura').value = hoje;
-					});
-</script>
-
+<script src="./scriptForm.js"></script>
 </body>
 </html>
