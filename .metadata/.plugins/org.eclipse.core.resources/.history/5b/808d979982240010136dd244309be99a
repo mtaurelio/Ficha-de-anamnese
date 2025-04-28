@@ -1,0 +1,46 @@
+function defineStructure() {
+  addColumn("cep");
+  addColumn("logradouro");
+  addColumn("bairro");
+  addColumn("cidade");
+  addColumn("uf");
+}
+
+function onSync(lastSyncDate) {
+  // Lógica para sincronizar dados, se necessário
+  // Por exemplo, você pode buscar dados atualizados desde a última sincronização
+}
+
+function createDataset(fields, constraints, sortFields) {
+  var dataset = DatasetBuilder.newDataset();
+  
+  // Aqui você pode buscar os dados de uma API REST
+  var cep = constraints[0].getValue();  // Obtendo o CEP da restrição
+  var url = "https://viacep.com.br/ws/" + cep + "/json/";
+
+  // Fazendo a requisição HTTP para a API
+  var response = getHTTPResponse(url);
+  var jsonResponse = JSON.parse(response);
+
+  // Adicionando dados ao dataset
+  dataset.addRow([jsonResponse.cep, jsonResponse.logradouro, jsonResponse.bairro, jsonResponse.localidade, jsonResponse.uf]);
+
+  return dataset;
+}
+
+function getHTTPResponse(url) {
+  var conn = new java.net.URL(url).openConnection();
+  conn.setRequestMethod("GET");
+  var response = "";
+  var br = new java.io.BufferedReader(new java.io.InputStreamReader(conn.getInputStream()));
+  var line;
+  while ((line = br.readLine()) != null) {
+      response += line;
+  }
+  br.close();
+  return response;
+}
+
+function onMobileSync(user) {
+  // Lógica de sincronização móvel, se necessário
+}
