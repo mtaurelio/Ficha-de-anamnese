@@ -1,0 +1,21 @@
+.collapse-content {
+  display: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+}
+
+.collapse-content.active {
+  display: block;
+}
+
+.collapse-button {
+  cursor: pointer;
+  font-weight: bold;
+}
+h2 {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+

@@ -1,6 +1,7 @@
 <html>
 <head>
 	<link type="text/css" rel="stylesheet" href="/style-guide/css/fluig-style-guide.min.css"/>
+	<link rel="stylesheet" href="./style.css">
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/jquery/jquery-ui.min.js"></script>
 	<script type="text/javascript" src="/portal/resources/js/mustache/mustache-min.js"></script>
@@ -8,18 +9,17 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
 	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
 	crossorigin="anonymous"></script>
+	
 </head>
 <!-- <i class="flaticon flaticon-bubble-chart icon-md" aria-hidden="true"></i> -->
 <body>
 	
 <form name="form" role="form">
 	<div class="fluig-style-guide">
-			<div class="page-header"> <img src="/ficha_anamnese/forms/img/laboratory.png" alt=""><h1>Laboratório Biofast</h1></div>
-
-			<div class="panel panel-success">
+			<div class="bg-ocean-dark-gradient">
 				<div class="panel-heading">
 					<div class="page-header">
-						<h2 onclick="toggleCollapse('conteudoAnamnese')"">Ficha Anamnese <small>Ficha de Anamnese do Paciente/Cliente</small></h2>
+						<h2 onclick="toggleCollapse('conteudoAnamnese')"">Ficha Anamnese <i class="flaticon flaticon-chevron-down icon-md" aria-hidden="true"></i></h2>
 				</div>
 					<h3 class="panel-title" onclick="toggleCollapse('dadosPaciente')""> <i class="flaticon flaticon-user-search icon-md" aria-hidden="true"></i>
 						Dados do paciente</h3>
@@ -66,7 +66,7 @@
 				
 				<div class="form-group col-md-3">
 					<label for="estado_civil">Estado Civil</label>
-					<select name="e_civil" id="e_civil" class="form-control">
+					<select name="estado_civil" id="estado_civil" class="form-control">
 						<option value="">Selecione</option>
 						<option value="casado">Casado</option>
 						<option value="solteiro">Solteiro</option>
@@ -87,6 +87,7 @@
 				<div class="form-group col-md-3">
 					<label for="cep"> <i class="flaticon flaticon-pin-map icon-sm" aria-hidden="true"></i> CEP</label>
 					<input type="text" mask="00000-000"  name="cep" id="cep" class="form-control" onchange="consultaCep(this.value)">
+					<div id="mensagem-cep"></div>
 				</div>
 				
 				<div class="form-group col-md-3">
@@ -108,7 +109,7 @@
 
 			
 
-			<div class="panel panel-success">
+			<div class="bg-ocean-dark-gradient">
 				<div class="panel-heading">
 					<div class="page-header"">
 						<h3 onclick="toggleCollapse('historicoPaciente')"">Histórico Médico</h3>
@@ -129,8 +130,8 @@
 					
 					<div class="form-group col-md-3">
 						<label>Já fez alguma cirurgia?</label><br>
-						<input type="radio" name="cirurgia" value="sim" onclick="mostrarCampo('cirurgiaCampos', true)"> Sim
-						<input type="radio" name="cirurgia" value="nao" onclick="mostrarCampo('cirurgiaCampos', false)"> Não
+						<input type="radio" id="sim" name="cirurgia" value="sim" onclick="mostrarCampo('cirurgiaCampos', true)"> Sim
+						<input type="radio" id="nao" name="cirurgia" value="nao" onclick="mostrarCampo('cirurgiaCampos', false)"> Não
 						<div id="cirurgiaCampos" style="display: none; margin-top: 10px;">
 							<label for="tipo_cirurgia">Tipo de cirurgia:</label>
 							<input type="text" name="tipo_cirurgia" id="tipo_cirurgia" class="form-control">
@@ -162,7 +163,7 @@
 					
 				</div>
 			
-				<div class="panel panel-success">
+				<div class="bg-ocean-dark-gradient">
 					<div class="panel-heading">
 						<div class="page-header">
 							<h3>Estilo de vida</h3>
@@ -215,7 +216,7 @@
 
 			</div>
 
-			<div class="panel panel-success">
+			<div class="bg-ocean-dark-gradient">
 				<div class="panel-heading">
 					<div class="page-header">
 						<h3>Queixas ou Objetivos</h3>
@@ -240,7 +241,7 @@
 				</div>
 			</div>
 
-			<div class="panel panel-success">
+			<div class="bg-ocean-dark-gradient">
 				<div class="panel-heading">
 					<div class="page-header">
 						<h3>Consentimento</h3>
@@ -263,42 +264,106 @@
 					<label for="assinatura" class="form-label">Assinatura</label>
 					<input type="text" id="assinatura" name="assinatura" class="form-control" placeholder="Digite seu nome ou assine digitalmente">
 				</div>
-
-
-
-				<style>
-					.collapse-content {
-						display: none;
-						padding: 10px;
-						border: 1px solid #ccc;
-						margin-top: 5px;
-					}
-				
-					.collapse-content.active {
-						display: block;
-					}
-				
-					.collapse-button {
-						cursor: pointer;
-						font-weight: bold;
-					}
-				</style>
-				
-				<div class="form-group col-md-12">
-					<div class="collapse-button" onclick="toggleCollapse('infoAdicional')">
-						Informações Adicionais ⯈
-					</div>
-					<div id="infoAdicional" class="collapse-content">
-						<label for="observacoes">Observações:</label>
-						<textarea name="observacoes" id="observacoes" class="form-control"></textarea>
-					</div>
-				</div>	
-
-			</div>
-				</div>
+		
 			</div>
 
 		</div>
+
+		<div style="height: 20px;"></div> <!-- Espaço forçado -->
+
+<!-- AVALIAÇÃO FISICA -->
+		<div class="bg-ocean-dark-gradient">
+			<div class="panel-heading">
+				<div class="page-header">
+					<h2 onclick="toggleCollapse('avaliacaoFisica')"">Avaliação Fisica <i class="flaticon flaticon-chevron-down icon-md" aria-hidden="true"></i></h2>
+			</div>
+				<h3 class="panel-title" onclick="toggleCollapse('dadosPaciente')""> <i class="flaticon flaticon-user-search icon-md" aria-hidden="true"></i>
+					Dados do paciente</h3>
+			</div>
+		</div>
+
+		<div id="avaliacaoFisica" class="collapse-content">
+			<div class="row">
+				<div class="form-group col-md-2">
+					<label for="altura">Altura</label>
+					<input type="number" name="altura" id="altura" mask="0.00" class="form-control">
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="peso">Peso</label>
+					<input type="number" name="peso" id="peso" mask="00.000"class="form-control">
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="imc">IMC</label>
+					<input type="number" name="imc" id="imc" class="form-control">
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="fc">Frequência Cardíaca</label>
+					<input type="number" name="fc" id="fc" class="form-control">
+				</div>
+
+				<div class="form-group col-md-2">
+					<label for="pa">Pressão arterial</label>
+					<input type="number" name="pa" id="pa" class="form-control">
+				</div>
+
+				<!-- row -->
+			</div>
+			<!-- avaliação fisica -->
+		</div> 
+		<div style="height: 20px;"></div> <!-- Espaço forçado -->
+
+		<!-- AVALIAÇÃO FISICA -->
+				<div class="bg-ocean-dark-gradient">
+					<div class="panel-heading">
+						<div class="page-header">
+							<h2 onclick="toggleCollapse('avaliacaoProfissional')"">Avaliação Profisional <i class="flaticon flaticon-chevron-down icon-md" aria-hidden="true"></i> </h2>
+					</div>
+						<h3 class="panel-title" onclick="toggleCollapse('dadosPaciente')""> <i class="flaticon flaticon-user-search icon-md" aria-hidden="true"></i>
+							Dados do paciente</h3>
+					</div>
+				</div>
+		
+				<div id="avaliacaoProfissional" class="collapse-content">
+					<div class="row">
+						<div class="form-group col-md-3">
+							<label for="dp">Diagnostico preliminar </label>
+							<textarea type="text" name="dp" id="dp" class="form-control" rows="2"></textarea>
+						</div>
+		
+						<div class="form-group col-md-3">
+							<label for="pas">Plano de ação sugerido</label>
+							<textarea type="text" name="pas" id="pas" class="form-control" rows="2"></textarea>
+						</div>
+		
+						<div class="form-group col-md-2">
+							<label for="enc">Encaminhamentos</label>
+							<select name="encaminhamento" id="encaminhamento" class="form-control">
+								<option value="selecione">Selecione</option>
+								<option value="nao">Não</option>
+								<option value="nutricionista">Nutricionista</option>
+								<option value="fisioterapia">Fisioterapia</option>
+								<option value="psicologo">Psicologo</option>
+								<option value="outro">Outro</option>
+							</select>						
+						</div>
+		
+						<div class="form-group col-md-3">
+							<label for="obs">Observações</label>
+							<textarea type="number" name="obs" id="obs" class="form-control" rows="2"></textarea>
+						</div>
+		
+						<!-- row -->
+					</div>
+					<!-- avaliação fisica -->
+				</div> 
+
+
+
+		<!-- form style -->
+	</div> 
 </form>
 
 <script src="./scriptForm.js"></script>
