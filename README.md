@@ -1,9 +1,4 @@
 
-![Visual do formulário](./assets/preview.png)
-
-
-
-
 # 📝 Formulário de Anamnese – TOTVS Fluig
 
 Olá! 👋  
