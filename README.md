@@ -1,8 +1,7 @@
 
 # 📝 Formulário de Anamnese – TOTVS Fluig
 
-Olá! 👋  
-Este projeto é um **formulário de anamnese** desenvolvido especialmente para a plataforma **TOTVS Fluig**. A proposta surgiu a partir da necessidade de estruturar um processo clínico simplificado, com integração ao **workflow** e ao **diagrama BPMN** da ferramenta.
+Este projeto é um **formulário de anamnese** desenvolvido para a plataforma **TOTVS Fluig**. A proposta surgiu a partir da necessidade de estruturar um processo clínico simplificado, com integração ao **workflow** e ao **diagrama BPMN** da ferramenta.
 
 ---
 
